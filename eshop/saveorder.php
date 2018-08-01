@@ -2,8 +2,6 @@
 	require "inc/lib.inc.php";
 	require "inc/config.inc.php";
 
-   define('PATH_NAME', 'log');
-
 	/*Создание файла с персональными данными пользователя*/
 
 	//Получите из веб-формы и обработайте данные заказа
@@ -17,21 +15,11 @@
     $dt=time();
     //Строковая переменная для записи в файл
     $order="$name|$email|$phone|$address|$orderId|$dt \n";
+    //записываем строку в файл
+    file_put_contents("admin/".ORDERS_LOG, $order, FILE_APPEND);
 
-    /* Записываем строку в файл*/
-    //Создаем директорию, если ее нет
-    if(!is_dir(PATH_NAME)) mkdir(PATH_NAME);
-    // Все права
-    chmod(PATH_NAME, 0777);
-    //записываем строку
-    file_put_contents(PATH_NAME."/".ORDERS_LOG, $order, FILE_APPEND);
-
-
-
-
-
-
-
+    /*Создание заказа*/
+    saveOrder($dt);
 ?>
 <!DOCTYPE html>
 <html>

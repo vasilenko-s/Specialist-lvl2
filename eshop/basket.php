@@ -14,8 +14,8 @@
 <?php
 //Проверим есть ли товар в корзине
 if (!myBasket()){
-    echo "Корзина пуста! Вернитесь в каталог <br>";
-} else echo "Вернуться в <a href='catalog.php'>каталог <br> </a>";
+    echo "Корзина пуста! Вернитесь в <a href='catalog.php'>каталог</a>  <br>";
+} else echo "Вернуться в <a href='catalog.php'>каталог</a> <br>";
 ?>
 <table border="1" cellpadding="5" cellspacing="0" width="100%">
 <tr>
