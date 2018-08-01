@@ -187,12 +187,18 @@ function getOrders(){
         //Освобождаем память занятую запросом
         mysqli_free_result($result);
         /* Сохранение результата в промежуточном массиве */
-        $orderinfo["goods"] = $items;
-        /* Добавление промежуточного массива в возвращаемый массив */
-        $allorders[] = $orderinfo;
+        if ($items) {
+            $orderinfo["goods"] = $items;
+            /* Добавление промежуточного массива в возвращаемый массив */
+            $allorders[] = $orderinfo;
+        }
     }
     return $allorders;
 }
+
+
+
+
 
 
 

@@ -1,6 +1,43 @@
-<?
+<?php
 $title = 'Авторизация';
 $login  = '';
+
+//Открываем сессию
+session_start();
+//Заголовок, который вынуждает клиента авторизоваться
+header("HTTP/1.0 401 Unauthorized");
+
+require_once "secure.inc.php";
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    $login = trim(strip_tags($_POST["login"]));
+    $pw = trim(strip_tags($_POST["pw"]));
+    $ref = trim(strip_tags($_GET["ref"]));
+    var_dump(checkHash($pw, $hash));
+    if(!$ref)
+        $ref = '/eshop/admin/';
+    if($login and $pw){
+        if($result = userExists($login)){
+            list($_, $hash) = explode(':', $result);
+        //отрезаем в конце строки символ перехода новую строку(!)
+            $hash=trim($hash);
+            if(checkHash($pw, $hash)){
+                echo "!!!!";
+                $_SESSION['admin'] = true;
+                header("Location: $ref");
+                exit;
+            }else{
+                $title = 'Неправильное имя пользователя или пароль!';
+            }
+        }else{
+            $title = 'Неправильное имя пользователя или пароль!';
+        }
+    }else{
+        $title = 'Заполните все поля формы!';
+    }
+
+}
+
 ?>
 <!DOCTYPE HTML>
 <html>

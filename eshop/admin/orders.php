@@ -2,9 +2,6 @@
 	require "secure/session.inc.php";
 	require "../inc/lib.inc.php";
 	require "../inc/config.inc.php";
-
-	$orders=getOrders();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,16 +11,19 @@
 </head>
 <body>
 <h1>Поступившие заказы:</h1>
-<?php
-/*Заполнение информации о заказчике*/
 
-$n=0;
+<?php
+$orders=getOrders();
+if (!$orders){
+    echo "Заказов нет!";
+    exit;
+}
+/*Заполнение информации о заказчике*/
 foreach ($orders as $order) {
-    ++$n;
     $dt = date("d-m-Y H:i", $order['date']);
     echo <<<OUT
     <hr>
-    <h2>Заказ номер:{$n} </h2>
+    <h2>Заказ номер: {$order['orderid']} </h2>
     <p><b>Заказчик</b>: {$order['name']} </p>
     <p><b>Email</b>: {$order['email']} </p>
     <p><b>Телефон</b>: {$order['phone']}</p>
@@ -32,8 +32,6 @@ foreach ($orders as $order) {
     
     <h3>Купленные товары:</h3>
 
-OUT;
-?>
 <table border="1" cellpadding="5" cellspacing="0" width="90%">
     <tr>
         <th>N п/п</th>
@@ -43,8 +41,7 @@ OUT;
         <th>Цена, руб.</th>
         <th>Количество</th>
     </tr>
-
-<?php
+OUT;
     //Порядковые номера заказов
     $i=0;
     //Для подсчета суммы
@@ -63,12 +60,15 @@ OUT;
             <td>{$item['price']}</td>
             <td>{$item['quantity']}</td>
         </tr>
-</table>
-<p>Всего товаров в заказе на сумму: {$sum} руб.</p>
 OUT2;
     }
+    echo "</table>";
+    echo "<p>Всего товаров в заказе на сумму: {$sum} руб.</p>";
 }
 ?>
+
+
+
 
 
 

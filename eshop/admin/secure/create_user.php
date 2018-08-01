@@ -1,4 +1,4 @@
-<?
+<?php
 require_once "session.inc.php";
 require_once "secure.inc.php";
 ?>
@@ -11,15 +11,15 @@ require_once "secure.inc.php";
 
 <body>
 <h1>Создание пользователя</h1>
-<?
+<?php
 $login = 'root';
 $password = '1234';
 $result = '';
 
 if ($_SERVER['REQUEST_METHOD']=='POST'){
-	$login = $_POST['login'] ?: $login;
+	$login = $_POST['login'] ?? $login;
 	if(!userExists($login)){
-		$password = $_POST['password'] ?: $password;
+		$password = $_POST['password'] ?? $password;
 		$hash = getHash($password);
 		if(saveUser($login, $hash))
 			$result = 'Хеш '. $hash. ' успешно добавлен в файл';
@@ -29,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
 		$result = "Пользователь $login уже существует. Выберите другое имя.";
 	}
 }
+
 ?>
 <h3><?= $result?></h3>
 <form action="<?= $_SERVER['PHP_SELF']?>" method="post">

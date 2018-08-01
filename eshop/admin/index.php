@@ -1,6 +1,11 @@
-<?
+<?php
 require_once "secure/session.inc.php";
 require_once "secure/secure.inc.php";
+
+//"Разлогинивание"
+if(isset($_GET['logout'])){
+    logOut();
+}
 ?>
 <!DOCTYPE HTML>
 <html>
