@@ -3,7 +3,9 @@
 	require "secure/session.inc.php";
 	require "../inc/lib.inc.php";
     require "../inc/config.inc.php";
-echo "!!";
+
+
+
 // Получаем и фильтруем данные из формы add2cat.php
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = trim(strip_tags($_POST['title']));

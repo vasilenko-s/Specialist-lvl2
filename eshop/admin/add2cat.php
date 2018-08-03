@@ -1,5 +1,6 @@
 <?
 require "secure/session.inc.php";
+
 ?>
 <!DOCTYPE html>
 <html>
