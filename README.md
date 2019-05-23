@@ -22,7 +22,7 @@
 <li>Безопасность приложения. Хеширование</li>  
 </ul>
 
-Сайт: https://mysite1982.000webhostapp.com/<br>
-Админка: https://mysite1982.000webhostapp.com/eshop/admin/<br>
+Сайт: https://specialist-lvl2.herokuapp.com/index.php<br>
+Админка: https://specialist-lvl2.herokuapp.com/eshop/admin/<br>
 login: root<br>
 pas: 1234<br>
