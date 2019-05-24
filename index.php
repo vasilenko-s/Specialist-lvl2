@@ -50,7 +50,7 @@ define('PATH_LOG', 'path.log');
 				<li><a href='index.php?id=info'>Информация</a></li>
 				<li><a href='test/index.php'>Он-лайн тест</a></li>
 				<li><a href='index.php?id=gbook'>Гостевая книга</a></li>
-                <li><a href='index.php?id=log'>Журнал посещений</a></li>
+                		<li><a href='index.php?id=log'>Журнал посещений</a></li>
 				<li><a href='eshop/catalog.php'>Магазин</a></li>
 			</ul>
 			<!-- Навигация -->
