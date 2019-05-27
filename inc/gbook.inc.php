@@ -1,9 +1,9 @@
 <?php
 /* Основные настройки */
-const DB_HOST="localhost";
-const DB_LOGIN="root";
-const DB_PASSWORD="1";
-const DB_NAME="gbook";
+const DB_HOST="eu-cdbr-west-02.cleardb.net";
+const DB_LOGIN="ba9546ea66f12f";
+const DB_PASSWORD="c80d8f41";
+const DB_NAME="heroku_e2cc62cd85afeeb";
 
 // Соединение и выбор базы данных
 $link = mysqli_connect(DB_HOST, DB_LOGIN, DB_PASSWORD, DB_NAME);
